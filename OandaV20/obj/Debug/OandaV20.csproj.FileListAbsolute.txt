@@ -1,0 +1,10 @@
+C:\Users\dcnoe\source\repos\OandaV20\OandaV20\bin\Debug\OandaV20.dll
+C:\Users\dcnoe\source\repos\OandaV20\OandaV20\bin\Debug\OandaV20.pdb
+C:\Users\dcnoe\source\repos\OandaV20\OandaV20\bin\Debug\Newtonsoft.Json.dll
+C:\Users\dcnoe\source\repos\OandaV20\OandaV20\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\dcnoe\source\repos\OandaV20\OandaV20\bin\Debug\Newtonsoft.Json.xml
+C:\Users\dcnoe\source\repos\OandaV20\OandaV20\obj\Debug\OandaV20.csproj.CoreCompileInputs.cache
+C:\Users\dcnoe\source\repos\OandaV20\OandaV20\obj\Debug\OandaV20.csproj.CopyComplete
+C:\Users\dcnoe\source\repos\OandaV20\OandaV20\obj\Debug\OandaV20.dll
+C:\Users\dcnoe\source\repos\OandaV20\OandaV20\obj\Debug\OandaV20.pdb
+C:\Users\dcnoe\source\repos\OandaV20\OandaV20\obj\Debug\OandaV20.csprojAssemblyReference.cache

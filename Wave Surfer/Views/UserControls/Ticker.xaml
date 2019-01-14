@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="WaveSurfer.Views.UserControls.Ticker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WaveSurfer.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="400">
+    <Grid>
+        <DataGrid x:Name="TickerDataGrid" CanUserAddRows="False" Grid.Row="0" DockPanel.Dock="Left" AutoGenerateColumns="False" BorderThickness="0" Width="Auto" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="LightGray" FontSize="14">
+            <DataGrid.Resources>
+                <local:FormatInstrumentName x:Key="FormatInstrumentName"/>
+                <local:FormatPriceBase x:Key="FormatPriceBase"/>
+                <local:FormatPriceDoubleDigit x:Key="FormatPriceDoubleDigit"/>
+                <Style TargetType="DataGrid">
+                    <Setter Property="HeadersVisibility" Value="Column"/>
+                </Style>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+                <Style x:Key="CellFontFamily" TargetType="DataGridCell">
+                    <Setter Property="FontFamily" Value="Consolas"/>
+                </Style>
+                <Style x:Key="AlignRight" TargetType="DataGridCell" BasedOn="{StaticResource CellFontFamily}">
+                    <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                    <Setter Property="Padding" Value="6,3"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style x:Key="AlignCenter" TargetType="DataGridCell" BasedOn="{StaticResource CellFontFamily}">
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                    <Setter Property="Padding" Value="3,6.5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style x:Key="AskColor" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource AlignRight}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding AskColor}" Value="1">
+                            <Setter Property="TextBlock.Foreground" Value="Red"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding AskColor}" Value="2">
+                            <Setter Property="TextBlock.Foreground" Value="Blue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+                <Style x:Key="BidColor" TargetType="DataGridCell" BasedOn="{StaticResource AlignRight}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding BidColor}" Value="1">
+                            <Setter Property="TextBlock.Foreground" Value="Red"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding BidColor}" Value="2">
+                            <Setter Property="TextBlock.Foreground" Value="Blue"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+
+                <DataTemplate x:Key="SymbolTemplate">
+                    <Border Padding="0">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Instrument, Converter={StaticResource FormatInstrumentName}}" FontFamily="Consolas" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+                <DataTemplate x:Key="BidTemplate">
+                    <Border Padding="0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="{Binding Bid, Converter={StaticResource FormatPriceBase}}" FontFamily="Consolas" Padding="2,3"  FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Text="{Binding Bid, Converter={StaticResource FormatPriceDoubleDigit}}" FontWeight="Bold" FontSize="20" FontFamily="Consolas" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        </StackPanel>                        
+                    </Border>
+                </DataTemplate>
+                <DataTemplate x:Key="AskTemplate">
+                    <Border Padding="0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="{Binding Ask, Converter={StaticResource FormatPriceBase}}" FontFamily="Consolas" Padding="2,3"  FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Text="{Binding Ask, Converter={StaticResource FormatPriceDoubleDigit}}" FontWeight="Bold" FontSize="20" FontFamily="Consolas" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Symbol" Binding="{Binding Instrument, Converter={StaticResource FormatInstrumentName}}"  Width="Auto" CellStyle="{StaticResource AlignCenter}" />
+                <!--<DataGridTemplateColumn Header="Symbol" CellTemplate="{StaticResource SymbolTemplate}" Width="Auto" CellStyle="{StaticResource AlignCenter}"/>-->
+                <DataGridTemplateColumn Header="Bid" CellTemplate="{StaticResource BidTemplate}" Width="*" CellStyle="{StaticResource BidColor}"/>
+                <DataGridTemplateColumn Header="Ask" CellTemplate="{StaticResource AskTemplate}" Width="*" CellStyle="{StaticResource AskColor}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

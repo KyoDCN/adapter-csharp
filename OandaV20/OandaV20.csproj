@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F63897D8-604E-4028-A2D0-C753E299B96A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OandaV20</RootNamespace>
+    <AssemblyName>OandaV20</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\AccountAPI.cs" />
+    <Compile Include="API\InstrumentAPI.cs" />
+    <Compile Include="API\OrderAPI.cs" />
+    <Compile Include="API\PositionAPI.cs" />
+    <Compile Include="API\PricingAPI.cs" />
+    <Compile Include="API\TradeAPI.cs" />
+    <Compile Include="API\TransactionAPI.cs" />
+    <Compile Include="API\MainAPI.cs" />
+    <Compile Include="Models\AccountModel\Account.cs" />
+    <Compile Include="Models\AccountModel\AccountChanges.cs" />
+    <Compile Include="Models\AccountModel\AccountChangesState.cs" />
+    <Compile Include="Models\AccountModel\AccountFinancingMode.cs" />
+    <Compile Include="Models\AccountModel\AccountID.cs" />
+    <Compile Include="Models\AccountModel\AccountProperties.cs" />
+    <Compile Include="Models\AccountModel\AccountSummary.cs" />
+    <Compile Include="Models\AccountModel\CalculatedAccountState.cs" />
+    <Compile Include="Models\AccountModel\GuaranteedStopLossOrderMode.cs" />
+    <Compile Include="Models\AccountModel\PositionAggregationMode.cs" />
+    <Compile Include="Models\InstrumentsModel\Candlestick.cs" />
+    <Compile Include="Models\InstrumentsModel\CandlestickData.cs" />
+    <Compile Include="Models\InstrumentsModel\CandlestickGranularity.cs" />
+    <Compile Include="Models\InstrumentsModel\OrderBook.cs" />
+    <Compile Include="Models\InstrumentsModel\OrderBookBucket.cs" />
+    <Compile Include="Models\InstrumentsModel\PositionBook.cs" />
+    <Compile Include="Models\InstrumentsModel\PositionBookBucket.cs" />
+    <Compile Include="Models\InstrumentsModel\WeeklyAlignment.cs" />
+    <Compile Include="Models\OrderModel\Definitions\CancellableOrderType.cs" />
+    <Compile Include="Models\OrderModel\Definitions\GuaranteedStopLossOrderEntryData.cs" />
+    <Compile Include="Models\OrderModel\Definitions\OrderID.cs" />
+    <Compile Include="Models\OrderModel\Definitions\OrderIdentifier.cs" />
+    <Compile Include="Models\OrderModel\Definitions\OrderSpecifier.cs" />
+    <Compile Include="Models\OrderModel\Definitions\OrderState.cs" />
+    <Compile Include="Models\OrderModel\Definitions\OrderStateFilter.cs" />
+    <Compile Include="Models\OrderModel\Definitions\OrderType.cs" />
+    <Compile Include="Models\OrderModel\Definitions\TimeInForce.cs" />
+    <Compile Include="Models\OrderModel\FixedPriceOrder.cs" />
+    <Compile Include="Models\OrderModel\LimitOrder.cs" />
+    <Compile Include="Models\OrderModel\MarketIfTouchedOrder.cs" />
+    <Compile Include="Models\OrderModel\MarketOrder.cs" />
+    <Compile Include="Models\OrderModel\Order.cs" />
+    <Compile Include="Models\OrderModel\RequestsJSON\LimitOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\RequestsJSON\MarketIfTouchedOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\RequestsJSON\MarketOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\RequestsJSON\OrderRequest.cs" />
+    <Compile Include="Models\OrderModel\RequestsJSON\StopLossOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\RequestsJSON\StopOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\RequestsJSON\TakeProfitOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\RequestsJSON\TrailingStopLossOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\Requests\LimitOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\Requests\MarketIfTouchedOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\Requests\MarketOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\Requests\OrderRequest.cs" />
+    <Compile Include="Models\OrderModel\Requests\StopLossOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\Requests\StopOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\Requests\TakeProfitOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\Requests\TrailingStopLossOrderRequest.cs" />
+    <Compile Include="Models\OrderModel\Requests\UpdateOrderClientExtensionsRequest.cs" />
+    <Compile Include="Models\OrderModel\StopLossOrder.cs" />
+    <Compile Include="Models\OrderModel\StopOrder.cs" />
+    <Compile Include="Models\OrderModel\TakeProfitOrder.cs" />
+    <Compile Include="Models\OrderModel\TrailingStopLossOrder.cs" />
+    <Compile Include="Models\PositionModel\CalculatedPositionState.cs" />
+    <Compile Include="Models\PositionModel\Position.cs" />
+    <Compile Include="Models\PositionModel\PositionSide.cs" />
+    <Compile Include="Models\PositionModel\Request\CloseoutPositionForInstrument.cs" />
+    <Compile Include="Models\PricingModel\ClientPrice.cs" />
+    <Compile Include="Models\PricingModel\HomeConversions.cs" />
+    <Compile Include="Models\PricingModel\Price.cs" />
+    <Compile Include="Models\PricingModel\PriceBucket.cs" />
+    <Compile Include="Models\PricingModel\PriceStatus.cs" />
+    <Compile Include="Models\PricingModel\PriceValue.cs" />
+    <Compile Include="Models\PricingModel\PricingHeartbeat.cs" />
+    <Compile Include="Models\PricingModel\QuoteHomeConversionFactors.cs" />
+    <Compile Include="Models\Primitives\AcceptDatetimeFormat.cs" />
+    <Compile Include="Models\Primitives\AccountUnits.cs" />
+    <Compile Include="Models\Primitives\Currency.cs" />
+    <Compile Include="Models\Primitives\Direction.cs" />
+    <Compile Include="Models\Primitives\GuaranteedStopLossOrderLevelRestriction.cs" />
+    <Compile Include="Models\Primitives\Instrument.cs" />
+    <Compile Include="Models\Primitives\InstrumentCommission.cs" />
+    <Compile Include="Models\Primitives\InstrumentName.cs" />
+    <Compile Include="Models\Primitives\InstrumentType.cs" />
+    <Compile Include="Models\RootObjects.cs" />
+    <Compile Include="Models\TradeModel\CalculatedTradeState.cs" />
+    <Compile Include="Models\TradeModel\Request\PutTradeOrderRequest.cs" />
+    <Compile Include="Models\TradeModel\Trade.cs" />
+    <Compile Include="Models\TradeModel\TradeID.cs" />
+    <Compile Include="Models\TradeModel\TradePL.cs" />
+    <Compile Include="Models\TradeModel\TradeSpecifier.cs" />
+    <Compile Include="Models\TradeModel\TradeState.cs" />
+    <Compile Include="Models\TradeModel\TradeStateFilter.cs" />
+    <Compile Include="Models\TradeModel\TradeSummary.cs" />
+    <Compile Include="Models\TransactionModel\ClientConfigureRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\ClientConfigureTransaction.cs" />
+    <Compile Include="Models\TransactionModel\CloseTransaction.cs" />
+    <Compile Include="Models\TransactionModel\CreateTransaction.cs" />
+    <Compile Include="Models\TransactionModel\DailyFinancingTransaction.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\ClientComment.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\ClientExtensions.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\ClientID.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\ClientTag.cs" />
+    <Compile Include="Models\OrderModel\Definitions\DynamicOrderState.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\FixedPriceOrderReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\FundingReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\LimitOrderReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\LiquidityRegenerationSchedule.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\LiquidityRegenerationScheduleStep.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\MarketIfTouchedOrderReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\MarketOrderDelayedTradeClose.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\MarketOrderMarginCloseout.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\MarketOrderMarginCloseoutReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\MarketOrderPositionCloseout.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\MarketOrderReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\MarketOrderTradeClose.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\OpenTradeFinancing.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\OrderCancelReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\OrderFillReason.cs" />
+    <Compile Include="Models\OrderModel\Definitions\OrderPositionFill.cs" />
+    <Compile Include="Models\OrderModel\Definitions\OrderTriggerCondition.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\PositionFinancing.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\RequestID.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\StopLossDetails.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\StopLossOrderReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\StopOrderReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TakeProfitDetails.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TakeProfitOrderReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TradeOpen.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TradeReduce.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TrailingStopLossDetails.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TrailingStopLossOrderReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TransactionFilter.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TransactionHeartbeat.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TransactionID.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TransactionRejectReason.cs" />
+    <Compile Include="Models\TransactionModel\Definitions\TransactionType.cs" />
+    <Compile Include="Models\OrderModel\Definitions\UnitsAvailable.cs" />
+    <Compile Include="Models\OrderModel\Definitions\UnitsAvailableDetails.cs" />
+    <Compile Include="Models\TransactionModel\DelayedTradeClosureTransaction.cs" />
+    <Compile Include="Models\TransactionModel\FixedPriceOrderTransaction.cs" />
+    <Compile Include="Models\TransactionModel\LimitOrderRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\LimitOrderTransaction.cs" />
+    <Compile Include="Models\TransactionModel\MarginCallEnterTransaction.cs" />
+    <Compile Include="Models\TransactionModel\MarginCallExitTransaction.cs" />
+    <Compile Include="Models\TransactionModel\MarginCallExtendTransaction.cs" />
+    <Compile Include="Models\TransactionModel\MarketIfTouchedOrderRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\MarketIfTouchedOrderTransaction.cs" />
+    <Compile Include="Models\TransactionModel\MarketOrderRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\MarketOrderTransaction.cs" />
+    <Compile Include="Models\TransactionModel\OrderCancelRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\OrderCancelTransaction.cs" />
+    <Compile Include="Models\TransactionModel\OrderClientExtensionsModifyRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\OrderClientExtensionsModifyTransaction.cs" />
+    <Compile Include="Models\TransactionModel\OrderFillTransaction.cs" />
+    <Compile Include="Models\TransactionModel\ReopenTransaction.cs" />
+    <Compile Include="Models\TransactionModel\ResetResettablePLTransaction.cs" />
+    <Compile Include="Models\TransactionModel\StopLossOrderRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\StopLossOrderTransaction.cs" />
+    <Compile Include="Models\TransactionModel\StopOrderRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\StopOrderTransaction.cs" />
+    <Compile Include="Models\TransactionModel\TakeProfitOrderRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\TakeProfitOrderTransaction.cs" />
+    <Compile Include="Models\TransactionModel\TradeClientExtensionsModifyRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\TradeClientExtensionsModifyTransaction.cs" />
+    <Compile Include="Models\TransactionModel\TrailingStopLossOrderRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\TrailingStopLossOrderTransaction.cs" />
+    <Compile Include="Models\TransactionModel\Transaction.cs" />
+    <Compile Include="Models\TransactionModel\TransferFundsRejectTransaction.cs" />
+    <Compile Include="Models\TransactionModel\TransferFundsTransaction.cs" />
+    <Compile Include="OandaV20.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
